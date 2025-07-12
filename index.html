@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>사회정서역량수업</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대화형 수업: 사회정서 역량과 관계적 괴롭힘</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <h1 class="text-xl font-bold text-sky-600">마음 성장 수업</h1>
+                <div class="hidden sm:flex items-center space-x-2">
+                    <button onclick="scrollToSection('intro')" class="nav-button px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-sky-100 hover:text-sky-700">소개</button>
+                    <button onclick="scrollToSection('sel')" class="nav-button px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-sky-100 hover:text-sky-700">마음 근육 기르기</button>
+                    <button onclick="scrollToSection('aggression')" class="nav-button px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-sky-100 hover:text-sky-700">보이지 않는 주먹</button>
+                    <button onclick="scrollToSection('activity')" class="nav-button px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-sky-100 hover:text-sky-700">함께 해봐요</button>
+                    <button onclick="scrollToSection('outro')" class="nav-button px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-sky-100 hover:text-sky-700">마무리</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <section id="intro" class="text-center mb-16 sm:mb-24">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">행복한 우리 반, 함께 만들어가요!</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                친구 관계는 우리에게 정말 중요해요. 기쁠 때 함께 웃고, 힘들 때 서로에게 힘이 되어주죠.
+                이 수업을 통해 우리는 자신의 마음을 더 잘 이해하고, 친구의 마음도 헤아리며,
+                더 건강하고 즐거운 관계를 만드는 방법을 함께 배워나갈 거예요.
+            </p>
+        </section>
+
+        <section id="sel" class="mb-16 sm:mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">튼튼한 마음 근육 기르기 💪</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">사회정서 역량은 우리 마음을 튼튼하게 만드는 '마음의 근육'과 같아요. 아래 5가지 마음 근육을 살펴보고, 나의 마음 근육은 얼마나 튼튼한지 점검해볼까요?</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div id="sel-cards" class="space-y-4">
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-center mb-4">나의 마음 근육 점검하기</h3>
+                    <div class="chart-container">
+                        <canvas id="selChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aggression" class="mb-16 sm:mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">보이지 않는 주먹, 관계적 괴롭힘 👊</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">때리거나 밀치는 것만이 폭력은 아니에요. 관계를 이용해 친구에게 상처를 주는 '관계적 괴롭힘'은 보이지 않아서 더 아플 수 있습니다. 어떤 종류가 있는지 알아봅시다.</p>
+            </div>
+            
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex rounded-lg shadow-sm">
+                    <button id="btn-offline" class="px-6 py-2 text-sm font-medium bg-sky-500 text-white rounded-l-lg focus:z-10 focus:ring-2 focus:ring-sky-500">오프라인</button>
+                    <button id="btn-cyber" class="px-6 py-2 text-sm font-medium bg-white text-stone-700 rounded-r-lg hover:bg-stone-100 focus:z-10 focus:ring-2 focus:ring-sky-500">사이버</button>
+                </div>
+            </div>
+
+            <div id="offline-content" class="space-y-4">
+            </div>
+
+            <div id="cyber-content" class="hidden space-y-4">
+            </div>
+        </section>
+
+        <section id="activity" class="mb-16 sm:mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">함께 해봐요! 🙋‍♀️🙋‍♂️</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">이제 배운 내용을 바탕으로 나 자신에 대해 생각해보는 시간을 가져봐요. 모든 활동은 나만 볼 수 있으니 솔직하게 참여해도 괜찮아요.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-center mb-4">지금 내 마음의 온도는?</h3>
+                    <div class="chart-container h-80 sm:h-96">
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                    <div class="mt-4">
+                        <label for="moodSlider" class="block text-sm font-medium text-stone-700 text-center">슬픔 😢 &lrarr; 기쁨 😄</label>
+                        <input id="moodSlider" type="range" min="0" max="100" value="50" class="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col">
+                    <h3 class="text-xl font-bold text-center mb-4">나를 나타내는 키워드</h3>
+                    <div class="flex mb-4">
+                        <input type="text" id="keyword-input" class="flex-grow border-stone-300 rounded-l-md shadow-sm focus:ring-sky-500 focus:border-sky-500" placeholder="예: 유머, 게임, 친구">
+                        <button id="add-keyword-btn" class="bg-sky-500 text-white px-4 py-2 rounded-r-md font-semibold hover:bg-sky-600">추가</button>
+                    </div>
+                    <div id="keyword-list" class="flex-grow bg-stone-50 rounded-lg p-4 space-x-2 space-y-2">
+                        <p class="text-sm text-stone-500">나를 표현하는 단어 3가지 이상을 추가해보세요.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="outro" class="text-center bg-sky-50 py-12 px-6 rounded-2xl">
+            <h2 class="text-3xl font-bold mb-4">다음 시간을 기대하며</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600 mb-6">
+                오늘 우리는 우리 자신과 친구 관계에 대해 깊이 생각해보는 첫걸음을 내디뎠어요.
+                나와 친구의 마음을 이해하고 존중하는 것이 얼마나 중요한지 느꼈을 거예요.
+            </p>
+            <div class="bg-white inline-block p-4 rounded-lg shadow">
+                 <p class="text-stone-700 font-semibold">다음 시간에는 다른 사람의 마음을 깊이 이해하는 <span class="text-sky-600 font-bold">'공감'</span>에 대해 더 자세히 알아볼 거예요!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
